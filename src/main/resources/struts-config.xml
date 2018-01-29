@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config  PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- 在form-beans中可以配置多个formbean -->
+	<form-beans>
+		<!-- name相当于取一个别名，方便后面使用 -->
+		<!-- type则是这个类的位置，包名+类名 -->
+		<form-bean name="userForm" type="com.education.bean.UserForm" />
+	</form-beans>
+	
+	<!-- action-mappings中可以配置多个action -->
+	<action-mappings>
+		<!-- path为拦截的访问路径 -->
+		<!-- type为处理该路径的类，会默认调用execute方法 -->
+		<!-- name为提交的formbean -->
+		<action path="/login" type="com.education.action.LoginAction"
+			name="userForm">
+			<!-- name为处理类的返回值 -->
+			<!-- path为返回到的页面 -->
+			<forward name="success" path="/success.jsp" />
+			<forward name="fail" path="/fail.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>
